@@ -276,7 +276,7 @@ Use code with caution.
 
 46. полный синтаксис команды select
 полный синтаксис select в sql:
-`
+```
 select [distinct] columns/expressions
 from table1
 join table2 on join_condition
@@ -285,21 +285,21 @@ group by columns
 having condition
 order by columns [asc/desc]
 offset n rows fetch next m rows only;
-`
+```
 порядок выполнения операций в этом запросе строго определен
 
-47. полный синтаксис команды insert
+48. полный синтаксис команды insert
 полный синтаксис команды insert:
-`
+```
 insert into table_name (column1, column2, ...)
 values (value1, value2, ...);
-`
+```
 или для вставки результата запроса:
-`
+```
 insert into table_name (column1, column2, ...)
 select value1, value2, ... from other_table;
-`
-48. полный синтаксис команды update
+```
+49. полный синтаксис команды update
 полный синтаксис команды update:
 
 update table_name
@@ -310,10 +310,10 @@ where condition;
 
 49. полный синтаксис команды delete
 полный синтаксис команды delete:
-`
+```
 delete from table_name
 where condition;
-`
+```
 условие where обязательно, иначе будут удалены все строки в таблице
 
 50. обобщенные табличные выражения (cte)
@@ -346,13 +346,13 @@ where condition;
 
 54. оператор case
 оператор case реализует условную логику (if-then-else) внутри запроса sql. он используется для создания вычисляемых столбцов на лету. синтаксис:
-`
+```
 case 
   when condition1 then result1
   when condition2 then result2
   else final_result
 end as column_alias
-`
+```
 55. вызов пользовательских функций
 вызов пользовательских функций (udf) зависит от их типа:
 
@@ -361,15 +361,15 @@ end as column_alias
 
 56. вызов хранимой процедуры
 вызов хранимой процедуры осуществляется с помощью команды exec или execute. синтаксис:
-`
+```
 exec procedure_name parameter1_value, parameter2_value, ...;
-`
+```
 для процедур с выходными параметрами синтаксис сложнее: `exec procedure_name @input_param = 1, @output_param = @var output;`
 
 58. извлечение диапазона строк в ms sql server
 для реализации пагинации (вывода диапазона строк) в mssql 2012+ используется стандартный ansi sql синтаксис `offset ... fetch next ... only`. он должен использоваться только в конце запроса, после обязательного предложения order by:
-`
+```
 select * from table_name
 order by id_comp
 offset 10 rows fetch next 20 rows only;
-`
+```
