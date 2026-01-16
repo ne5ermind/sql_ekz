@@ -1,0 +1,7 @@
+select 
+    t.plane,
+    sum(case when datepart(dw, pit.date) in (2, 3, 4) then 1 else 0 end) as first_week_half,
+    sum(case when datepart(dw, pit.date) in (1, 5, 6, 7) then 1 else 0 end) as second_week_half
+from Trip t
+join Pass_in_trip pit on t.trip_no = pit.trip_no
+group by t.plane;
